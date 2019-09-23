@@ -1,0 +1,45 @@
+const score = document.querySelector('.score'),
+      start = document.querySelector('.start'),
+      gameArea = document.querySelector('.gameArea'),
+      car = document.createElement('div');
+
+car.classList.add('car');
+
+const keys = {
+  ArrowUp: false,
+  ArrowDown: false,
+  ArrowRight: false,
+  Arrowleft: false
+};
+
+const settings = {
+  start: false,
+  score: 0,
+  speed: 3
+};
+
+const startGame = () => {
+  start.classList.add('hide');
+  gameArea.append(car);
+  settings.start = true;
+  requestAnimationFrame(playGame);
+};
+
+const playGame = () => {
+  console.log('play');
+  if (settings.start) {
+    requestAnimationFrame(playGame);
+  }
+};
+
+const startRun = (evt) => {
+  evt.preventDefault();
+};
+
+const stopRun = (evt) => {
+  evt.preventDefault();
+};
+
+start.addEventListener('click', startGame);
+document.addEventListener('keydown', startRun);
+document.addEventListener('keyup', stopRun);
